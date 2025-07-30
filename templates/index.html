@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finavue - Financial Intelligence</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="logo-container">
+            <img src="{{ url_for('static', filename='logo.png') }}" class="logo" alt="Finavue Logo">
+        </div>
+        <p class="subtitle">Your Complete Financial Intelligence Platform</p>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="tabs">
+        <button class="tab active" data-target="valuation">Valuation Engine</button>
+        <button class="tab" data-target="metrics">Financial Metrics</button>
+        <button class="tab" data-target="funding">Fundraising Planner</button>
+        <button class="tab" data-target="scenario">Scenario Simulator</button>
+        <button class="tab" data-target="download">Download Reports</button>
+        <button class="tab" data-target="admin">Admin Settings</button>
+    </nav>
+
+    <!-- Tab Containers -->
+    <main>
+        <!-- 1️⃣ Valuation Engine -->
+        <section class="tab-content active" id="valuation">
+            <h2>Valuation Engine</h2>
+            <form id="valuationForm">
+                <input type="number" name="revenue" placeholder="Revenue (₹)" required>
+                <input type="number" name="growth" placeholder="Growth Rate (%)" required>
+                <input type="number" name="discount" placeholder="Discount Rate (%)" required>
+                <select name="method">
+                    <option>DCF</option>
+                    <option>VC</option>
+                    <option>Market Multiples</option>
+                </select>
+                <button type="submit">Calculate</button>
+            </form>
+            <p id="valuationResult" class="result"></p>
+            <canvas id="valuationChart" height="120"></canvas>
+        </section>
+
+        <!-- 2️⃣ Financial Metrics -->
+        <section class="tab-content" id="metrics">
+            <h2>Financial Metrics</h2>
+            <form id="metricsForm">
+                <input type="number" name="revenue" placeholder="Revenue (₹)" required>
+                <input type="number" name="cogs" placeholder="COGS (₹)" required>
+                <input type="number" name="opex" placeholder="Operating Expenses (₹)" required>
+                <input type="number" name="cash" placeholder="Cash Available (₹)" required>
+                <input type="number" name="burn" placeholder="Monthly Burn (₹)" required>
+                <input type="number" name="ltv" placeholder="LTV (₹)" required>
+                <input type="number" name="cac" placeholder="CAC (₹)" required>
+                <button type="submit">Calculate</button>
+            </form>
+            <p id="metricsResult" class="result"></p>
+            <canvas id="metricsChart" height="120"></canvas>
+        </section>
+
+        <!-- 3️⃣ Fundraising Planner -->
+        <section class="tab-content" id="funding">
+            <h2>Fundraising Planner</h2>
+            <form id="fundingForm">
+                <input type="number" name="current_cash" placeholder="Current Cash (₹)" required>
+                <input type="number" name="burn_rate" placeholder="Monthly Burn (₹)" required>
+                <input type="number" name="months" placeholder="Runway Months" required>
+                <input type="number" name="equity" placeholder="Equity Dilution (%)" required>
+                <button type="submit">Plan Funding</button>
+            </form>
+            <p id="fundingResult" class="result"></p>
+            <canvas id="fundingChart" height="120"></canvas>
+        </section>
+
+        <!-- 4️⃣ Scenario Simulator -->
+        <section class="tab-content" id="scenario">
+            <h2>Scenario Simulator</h2>
+            <form id="scenarioForm">
+                <input type="number" name="base_revenue" placeholder="Base Revenue (₹)" required>
+                <input type="number" name="growth_rate" placeholder="Growth Rate (%)" required>
+                <input type="number" name="years" placeholder="Years to Simulate" required>
+                <button type="submit">Simulate</button>
+            </form>
+            <p id="scenarioResult" class="result"></p>
+            <canvas id="scenarioChart" height="120"></canvas>
+        </section>
+
+        <!-- 5️⃣ Download Reports -->
+        <section class="tab-content" id="download">
+            <h2>Download Reports</h2>
+            <p>Click below to download the latest financial summary report.</p>
+            <a href="/download_report" class="download-btn">Download Report</a>
+        </section>
+
+        <!-- 6️⃣ Admin Settings -->
+        <section class="tab-content" id="admin">
+            <h2>Admin Settings</h2>
+            <form id="adminForm">
+                <input type="text" name="branding" placeholder="Branding Name">
+                <input type="number" name="discount" placeholder="Default Discount Rate (%)">
+                <button type="submit">Update</button>
+            </form>
+            <p id="adminResult" class="result"></p>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script>
+        // Tab switching
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+
+                document.querySelectorAll('.tab-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                document.getElementById(tab.dataset.target).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

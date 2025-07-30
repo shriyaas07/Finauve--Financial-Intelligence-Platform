@@ -1,0 +1,113 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to bottom right, #f7f9fc, #eef2f7);
+    color: #f7f4f4;
+}
+
+/* Header */
+.header {
+    text-align: center;
+    background-color: #030321;
+    padding: 10px 0;
+    box-shadow: 0 2px 8px white
+}
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.logo {
+    height: 150px;
+}
+.subtitle {
+    margin: 0;
+    font-size: 50px;
+    color: #fffbfb;
+}
+
+/* Tabs */
+.tabs {
+    display: flex;
+    justify-content: center;
+    background: #4CAF50;
+}
+.tab {
+    padding: 12px 20px;
+    border: none;
+    background: none;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+.tab.active, .tab:hover {
+    background: #388E3C;
+}
+
+/* Tab Content */
+.tab-content {
+    display: none;
+    padding: 20px;
+    max-width: 600px;
+    margin: auto;
+    background: white;
+    margin-top: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+}
+.tab-content.active {
+    display: block;
+}
+
+form input, form select, form button {
+    display: block;
+    width: 100%;
+    margin-bottom: 12px;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+form button {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+form button:hover {
+    background: #388E3C;
+}
+
+.result {
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+/* Download button */
+.download-btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 12px 18px;
+    background: #2196F3;
+    color: white;
+    font-weight: bold;
+    border-radius: 8px;
+    text-decoration: none;
+}
+.download-btn:hover {
+    background: #1976D2;
+}
+
+.result {
+    font-weight: bold;
+    color: #2c3e50;  /* Dark color for visibility */
+    margin-top: 10px;
+    text-align: center;
+}
+/* h2 color*/
+h2 {
+    color: #2c3e50;   /* Dark blue-gray */
+    font-weight: bold;
+}
