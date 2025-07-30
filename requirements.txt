@@ -1,5 +1,4 @@
-Flask
-chart-studio
-matplotlib
-pandas
-reportlab
+Flask==3.0.2
+gunicorn==21.2.0
+pandas==2.2.1
+matplotlib==3.8.3
